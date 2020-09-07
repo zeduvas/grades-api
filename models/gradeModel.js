@@ -1,4 +1,4 @@
-export default (moongose) => {
+export default (mongoose) => {
   const schema = mongoose.Schema({
     name: {
       type: String,
@@ -6,28 +6,25 @@ export default (moongose) => {
     },
     subject: {
       type: String,
-      required: false,
+      required: true,
     },
     type: {
       type: String,
-      required: false,
+      required: true,
     },
     value: {
       type: Number,
-      required: false,
+      required: true,
       validate(value) {
         if (value < 0) {
-          throw new Error('Valor Negativo');
+          throw new Error('negative value');
         }
       },
     },
-    lastModified: {
-      type: String,
-      required: false,
-    },
+    lastModified: { type: Date, default: Date.now },
   });
 
-  const gradeModel = moongose.model('grades', schema, 'grades');
+  const gradeModel = mongoose.model('grades', schema, 'grades');
 
   return gradeModel;
 };
