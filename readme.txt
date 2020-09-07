@@ -12,4 +12,4 @@ git merge feature/NovaRota
 //
 heroku create
 git remote -v
-heroku apps:rename grades-app-igti
+heroku apps:rename grades-api-igti-je
